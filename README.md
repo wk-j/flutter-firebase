@@ -20,3 +20,10 @@ flutter create --project-name flutter_firebase .
 flutter build web
 flutter run -d chrome
 ```
+
+*Webdev*
+
+```bash
+flutter packages pub global activate webdev
+webdev serve
+```
