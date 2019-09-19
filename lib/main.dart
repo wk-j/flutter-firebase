@@ -10,8 +10,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Center(
-        child: Text("Hello, world!"),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Hello"),
+        ),
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Hello"),
+              subtitle: Text("enhancement"),
+              trailing: Icon(Icons.add_comment),
+            )
+          ],
+        ),
       ),
     );
   }
