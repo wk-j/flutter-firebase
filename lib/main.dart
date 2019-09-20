@@ -52,8 +52,21 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  go() {
+    Firestore.instance.collection("issues").document().setData(
+      {
+        "title": "title",
+        "label": "label",
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Firestore.instance.collection("issues").getDocuments().then((data) {
+    //   debugPrint("data - ${data}");
+    // });
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -64,12 +77,7 @@ class MyApp extends StatelessWidget {
           title: GestureDetector(
             child: Text("Hello"),
             onTap: () {
-              var api = new Api();
-              try {
-                api.go();
-              } catch (ex) {
-                debugPrint("error $ex");
-              }
+              go();
             },
           ),
         ),
