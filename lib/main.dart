@@ -45,15 +45,15 @@ class Api {
 class MyApp extends StatelessWidget {
   Widget buildItem(DocumentSnapshot document) {
     return ListTile(
+      leading: Icon(Icons.home),
       title: Text(document["title"]),
       subtitle: Text(document["label"]),
+      trailing: Icon(Icons.details),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    // var stream = Firestore.instance.collection("issues").snapshots();
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -76,6 +76,7 @@ class MyApp extends StatelessWidget {
         body: StreamBuilder(
           stream: Firestore.instance.collection("issues").snapshots(),
           builder: (context, shot) {
+            debugPrint("snapshot has data - ${shot.hasData}");
             if (!shot.hasData) {
               return Center(
                 child: Text("Loading ..."),
