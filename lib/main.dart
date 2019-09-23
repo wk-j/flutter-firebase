@@ -52,8 +52,8 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  go() {
-    Firestore.instance.collection("issues").document().setData(
+  Future<void> go() async {
+    return await Firestore.instance.collection("issues").document().setData(
       {
         "title": "title",
         "label": "label",
@@ -75,9 +75,11 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: GestureDetector(
-            child: Text("Hello"),
+            child: Text("H"),
             onTap: () {
-              go();
+              go().then((_) {
+                debugPrint("hello, world!");
+              });
             },
           ),
         ),
@@ -90,6 +92,8 @@ class MyApp extends StatelessWidget {
                 child: Text("Loading ..."),
               );
             }
+
+            debugPrint("data length - ${shot.data.documents}");
 
             return ListView.builder(
               itemExtent: 80.0,

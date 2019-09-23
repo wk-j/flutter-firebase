@@ -21,9 +21,15 @@ flutter build web
 flutter run -d chrome
 ```
 
-*Webdev*
+*Rule*
 
-```bash
-flutter packages pub global activate webdev
-webdev serve
+```csharp
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
 ```
